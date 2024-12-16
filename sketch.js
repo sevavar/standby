@@ -38,7 +38,7 @@ let bgColor = 155;
 let strokeColor = 255;
 let strokeW = 0;
 let centralCircleR; 
-let tableText = 'SAMPLE TEXT';
+let tableText = 'HELLO WORLD';
 let img;
 let circleRadius = 100;
 
@@ -233,6 +233,13 @@ function createUI() {
   buttons.recolor.class('button');
   buttons.recolor.mousePressed(() => {recolor(); generatePattern();});
   buttons.recolor.parent(buttonColumn);
+  
+      // Reset Colors
+  buttons.resetColors = createButton
+  (`<span class="center-align">Default Colors</span>`);
+  buttons.resetColors.class('button');
+  buttons.resetColors.mousePressed(() => {resetColors();generatePattern();});
+  buttons.resetColors.parent(buttonColumn);
   
       // Save As Is
   buttons.saveCurrent = createButton
@@ -681,6 +688,20 @@ function recolor() {
 function getRandomColor() {
   return '#' + floor(random(0, 16777215)).toString(16).padStart(6, '0');
 }
+
+function resetColors() {
+  colors = {
+  white: '#ffffff',
+  yellow: '#fff000',
+  cyan: '#00ffff',
+  green: '#00ff00',
+  magenta: '#ff00ff',
+  red: '#ff0000',
+  blue: '#0000ff',
+  black: '#000000'
+};
+}
+
 function savePNG() {
   save();
 }
@@ -691,4 +712,5 @@ function windowResized() {
   resizeCanvas(windowWidth, windowHeight - uiHeight);
   generatePattern();
 }
+
 
